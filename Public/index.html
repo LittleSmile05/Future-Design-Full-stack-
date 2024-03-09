@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+    .navbar {
+        background-color: white; 
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    .navbar-nav .nav-link {
+        position: relative;
+}
+
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: rgb(45, 32, 30); 
+        transition: width 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 100%;
+    }
+
+            body {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #eee;
+    }
+
+    .header {
+        height: 100vh;
+        background-image: 
+        linear-gradient(to right bottom, 
+        rgba(255, 255, 255, 0.3),
+        rgba(185, 185, 185, 0.5)),
+        url('https://img.freepik.com/free-photo/3d-rendering-minimalist-interior-with-copy-space_23-2150943519.jpg?w=1060&t=st=1709964390~exp=1709964990~hmac=eeab90a0ab992e0c0144da708549c253f6dfeb3a074f4f1487b915450e6f5695');
+        
+    background-size: cover;
+        background-position: top;
+        position: relative;
+
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    }
+
+    .brand-box {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    .brand { font-size: 20px; }
+
+    .text-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .heading-primary {
+        color: #fff;
+        text-transform: uppercase;
+
+        backface-visibility: hidden;
+        margin-bottom: 30px;
+    }
+
+    .heading-primary-main {
+        display: block;
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: 5px;
+    }
+
+    .heading-primary-sub {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 7.4px;
+    }
+
+    .btn:link,
+    .btn:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .2s;
+        position: relative;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-white {
+        background-color: #fff;
+        color: #777;
+    font-size: 14px;
+    }
+    * {
+    font-family: Nunito, sans-serif;
+    }
+
+    .text-blk {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    line-height: 25px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    }
+
+    .responsive-cell-block {
+    min-height: 75px;
+    }
+
+    .responsive-container-block {
+    min-height: 75px;
+    height: fit-content;
+    width: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    justify-content: flex-start;
+    }
+
+    .responsive-container-block.bigContainer {
+    padding-top: 0px;
+    padding-right: 50px;
+    padding-bottom: 0px;
+    padding-left: 50px;
+    margin-top: 50px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    }
+
+    .responsive-container-block.Container {
+    max-width: 1320px;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    }
+
+    .mainImg {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    }
+
+    .blueDots {
+    position: absolute;
+    top: 150px;
+    right: 15%;
+    z-index: -1;
+    left: auto;
+    width: 80%;
+    height: 500px;
+    object-fit: cover;
+    }
+
+    .imgContainer {
+    position: relative;
+    width: 48%;
+    }
+
+    .responsive-container-block.textSide {
+    width: 48%;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    z-index: 100;
+    }
+
+    .text-blk.heading {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    }
+
+    .text-blk.subHeading {
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    }
+
+    .cardImg {
+    width: 71px;
+    height: 71px;
+    }
+
+    .cardImgContainer {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: rgb(229, 229, 229);
+    border-right-color: rgb(229, 229, 229);
+    border-bottom-color: rgb(229, 229, 229);
+    border-left-color: rgb(229, 229, 229);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    }
+
+    .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    }
+
+    .text-blk.cardHeading {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    }
+
+    .text-blk.cardSubHeading {
+    color: rgb(153, 153, 153);
+    line-height: 22px;
+    }
+
+    .explore {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(107, 107, 107);
+    box-shadow: rgba(244, 152, 146, 0.25) 0px 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-bottom-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-bottom-color: initial;
+    border-left-color: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    padding-top: 17px;
+    padding-right: 40px;
+    padding-bottom: 17px;
+    padding-left: 40px;
+    }
+
+    .explore:hover {
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(65, 54, 54);
+        
+    }
+
+    #ixvck {
+    margin-top: 60px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    }
+
+    @media (max-width: 1024px) {
+    .responsive-container-block.Container {
+        position: relative;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .mainImg {
+        bottom: 0px;
+    }
+
+    .imgContainer {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: auto;
+        width: 60%;
+    }
+
+    .responsive-container-block.textSide {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: auto;
+        width: 70%;
+    }
+
+    .responsive-container-block.Container {
+        flex-direction: column-reverse;
+    }
+
+    .imgContainer {
+        position: relative;
+        width: auto;
+        margin-top: 0px;
+        margin-right: auto;
+        margin-bottom: 0px;
+        margin-left: auto;
+    }
+
+    .responsive-container-block.textSide {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 20px;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .responsive-container-block.Container {
+        flex-direction: row-reverse;
+    }
+
+    .responsive-container-block.Container {
+        flex-direction: column-reverse;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .responsive-container-block.textSide {
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .text-blk.subHeading {
+        text-align: center;
+        font-size: 17px;
+        max-width: 520px;
+    }
+
+    .text-blk.heading {
+        text-align: center;
+    }
+
+    .imgContainer {
+        opacity: 0.8;
+    }
+
+    .imgContainer {
+        height: 500px;
+    }
+
+    .imgContainer {
+        width: 30px;
+    }
+
+    .responsive-container-block.Container {
+        flex-direction: column-reverse;
+    }
+
+    .responsive-container-block.Container {
+        flex-wrap: nowrap;
+    }
+
+    .responsive-container-block.textSide {
+        width: 100%;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 20px;
+        margin-left: 0px;
+    }
+
+    .imgContainer {
+        width: 90%;
+    }
+
+    .imgContainer {
+        height: 450px;
+        margin-top: 5px;
+        margin-right: 33.9062px;
+        margin-bottom: 0px;
+        margin-left: 33.9062px;
+    }
+
+    .explore {
+        font-size: 16px;
+        line-height: 14px;
+    }
+    }
+
+    @media (max-width: 500px) {
+    .imgContainer {
+        position: static;
+        height: 450px;
+    }
+
+    .mainImg {
+        height: 100%;
+    }
+    .mainImg {
+        background-image: linear-gradient(to right bottom, 
+            rgba(45, 38, 38, 0.3),
+            rgba(185, 185, 185, 0.5)),
+            url('https://img.freepik.com/premium-photo/sketch-design-interior-living-3d-rendering_256301-1864.jpg?w=740');
+    }
+
+
+    .blueDots {
+        width: 100%;
+        left: 0px;
+        top: 0px;
+        bottom: auto;
+        right: auto;
+    }
+
+    .imgContainer {
+        width: 100%;
+    }
+
+    .responsive-container-block.textSide {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+    }
+
+    .responsive-container-block.Container {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+
+    .responsive-container-block.bigContainer {
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding: 0 30px 0 30px;
+    }
+
+    .text-blk.subHeading {
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .text-blk.heading {
+        font-size: 28px;
+        line-height: 28px;
+    }
+
+    .responsive-container-block.textSide {
+        margin-top: 40px;
+        margin-right: 0px;
+        margin-bottom: 50px;
+        margin-left: 0px;
+    }
+
+    .imgContainer {
+        margin-top: 5px;
+        margin-right: auto;
+        margin-bottom: 0px;
+        margin-left: auto;
+        width: 100%;
+        position: relative;
+    }
+
+    .explore {
+        padding-top: 17px;
+        padding-right: 0px;
+        padding-bottom: 17px;
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    #ixvck {
+        width: 90%;
+        margin-top: 40px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+
+    .blueDots {
+        bottom: 0px;
+        width: 100%;
+        height: 80%;
+        top: 10%;
+    }
+
+    .text-blk.cardHeading {
+        font-size: 16px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 8px;
+        margin-left: 0px;
+        line-height: 25px;
+    }
+
+    .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12 {
+        padding-top: 10px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+    }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
+
+    *,
+    *:before,
+    *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+    body {
+    margin: 0;
+    }
+
+    .wk-desk-1 {
+    width: 8.333333%;
+    }
+
+    .wk-desk-2 {
+    width: 16.666667%;
+    }
+
+    .wk-desk-3 {
+    width: 25%;
+    }
+
+    .wk-desk-4 {
+    width: 33.333333%;
+    }
+
+    .wk-desk-5 {
+    width: 41.666667%;
+    }
+
+    .wk-desk-6 {
+    width: 50%;
+    }
+
+    .wk-desk-7 {
+    width: 58.333333%;
+    }
+
+    .wk-desk-8 {
+    width: 66.666667%;
+    }
+
+    .wk-desk-9 {
+    width: 75%;
+    }
+
+    .wk-desk-10 {
+    width: 83.333333%;
+    }
+
+    .wk-desk-11 {
+    width: 91.666667%;
+    }
+
+    .wk-desk-12 {
+    width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+    .wk-ipadp-1 {
+        width: 8.333333%;
+    }
+
+    .wk-ipadp-2 {
+        width: 16.666667%;
+    }
+
+    .wk-ipadp-3 {
+        width: 25%;
+    }
+
+    .wk-ipadp-4 {
+        width: 33.333333%;
+    }
+
+    .wk-ipadp-5 {
+        width: 41.666667%;
+    }
+
+    .wk-ipadp-6 {
+        width: 50%;
+    }
+
+    .wk-ipadp-7 {
+        width: 58.333333%;
+    }
+
+    .wk-ipadp-8 {
+        width: 66.666667%;
+    }
+
+    .wk-ipadp-9 {
+        width: 75%;
+    }
+
+    .wk-ipadp-10 {
+        width: 83.333333%;
+    }
+
+    .wk-ipadp-11 {
+        width: 91.666667%;
+    }
+
+    .wk-ipadp-12 {
+        width: 100%;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .wk-tab-1 {
+        width: 8.333333%;
+    }
+
+    .wk-tab-2 {
+        width: 16.666667%;
+    }
+
+    .wk-tab-3 {
+        width: 25%;
+    }
+
+    .wk-tab-4 {
+        width: 33.333333%;
+    }
+
+    .wk-tab-5 {
+        width: 41.666667%;
+    }
+
+    .wk-tab-6 {
+        width: 50%;
+    }
+
+    .wk-tab-7 {
+        width: 58.333333%;
+    }
+
+    .wk-tab-8 {
+        width: 66.666667%;
+    }
+
+    .wk-tab-9 {
+        width: 75%;
+    }
+
+    .wk-tab-10 {
+        width: 83.333333%;
+    }
+
+    .wk-tab-11 {
+        width: 91.666667%;
+    }
+
+    .wk-tab-12 {
+        width: 100%;
+    }
+    }
+
+    @media (max-width: 500px) {
+    .wk-mobile-1 {
+        width: 8.333333%;
+    }
+
+    .wk-mobile-2 {
+        width: 16.666667%;
+    }
+
+    .wk-mobile-3 {
+        width: 25%;
+    }
+
+    .wk-mobile-4 {
+        width: 33.333333%;
+    }
+
+    .wk-mobile-5 {
+        width: 41.666667%;
+    }
+
+    .wk-mobile-6 {
+        width: 50%;
+    }
+
+    .wk-mobile-7 {
+        width: 58.333333%;
+    }
+
+    .wk-mobile-8 {
+        width: 66.666667%;
+    }
+
+    .wk-mobile-9 {
+        width: 75%;
+    }
+
+    .wk-mobile-10 {
+        width: 83.333333%;
+    }
+
+    .wk-mobile-11 {
+        width: 91.666667%;
+    }
+
+    .wk-mobile-12 {
+        width: 100%;
+    }
+    }
+    /* .container-fluid {
+        padding: 20px;
+    }
+
+    .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 50px;
+    margin-bottom: 80px;
+    } */
+
+    /* .project {
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .project img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .project:hover img {
+        transform: scale(1.1);
+    } */
+
+
+
+
+    .clear-fix {
+    clear: both;
+    }
+
+    .masonry-container {
+    width: 80vw;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    }
+
+    .panel {
+    position: relative;
+    display: inline-block;
+    width: calc((80vw - 60px)/3);
+    height: calc((80vw - 60px)/3);
+    margin-left: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-out;
+    }
+
+    .panel:hover {
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.55);
+    transition: all 0.2s ease-out;
+    }
+
+    .panel:nth-child(11n+1) {
+    margin-left: 0;
+    }
+
+    .panel:nth-child(11n+4) {
+    margin-left: 0;
+    width: calc(((80vw - 20px)/3)*2);
+    height: calc((80vw - 60px)/3);
+    }
+
+    .panel:nth-child(11n+6) {
+    margin-left: 0;
+    float: left;
+    width: calc((80vw - 60px)/3);
+    height: calc(((80vw - 20px)/3)*2 - 8px);
+    }
+
+    .panel:nth-child(11n+6) > .panel-wrapper > .panel-img {
+    transform: translateX(-25%);
+    }
+
+    .panel:nth-child(11n+7) {
+    margin-left: 27px;
+    width: calc(((80vw - 20px)/3)*2);
+    }
+
+    .panel:nth-child(11n+8) {
+    margin-left: 27px;
+    }
+
+    .panel:nth-child(11n+9) {
+    float: none;
+    }
+
+    .panel:nth-child(11n+10) {
+    margin-left: 0;
+    width: calc((80vw - 30px)/2);
+    }
+
+    .panel:nth-child(11n+11) {
+    width: calc((80vw - 30px)/2);
+    }
+
+
+    .panel-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+    }
+
+    .panel-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    }
+
+    .panel-overlay:hover {
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    }
+
+    .panel-text {
+    position: absolute;
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+    left: 25px;
+    bottom: 0;
+    z-index: 10;
+    }
+
+    .panel-title {
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 0;
+    color: #fff;
+    }
+
+    .panel-tags {
+    padding-top: 2px;
+    }
+
+    .tag-icon-img {
+    display: inline-block;
+    width: 10px;
+    height: auto;
+    transform: translateY(2px);
+    }
+
+    .tags-list {
+    font-size: 0.55em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    }
+
+    .panel-gradient {
+    position: absolute;
+    width: 100%;
+    height: 65%;
+    bottom: 0;
+    opacity: 0.65;
+    z-index: 5;
+    }
+
+    .panel-vingette {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    opacity: 0.5;
+    }
+
+    .panel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: 0 auto;
+    min-width: 100%;
+    height: 100%;
+    }
+
+
+    #show-more-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 5px 10px;
+        font-size: 18px;
+        background-color: rgb(107, 107, 107);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, font-size 0.3s ease; 
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 70px;
+    }
+
+    #show-more-btn:hover {
+        background-color: rgb(65, 54, 54);
+    }
+
+    .project {
+        display: grid;
+    }
+
+    .project img {
+        width: 100%;
+        height: auto;
+    }
+
+    .project-small {
+        grid-column: span 0.5;
+    }
+
+    .project-large {
+        grid-column: span 1;
+    }
+    .footer {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 30px 30px 20px 30px;
+    color: #2f2f2f;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    }
+
+    .footer > * {
+    flex:  1 100%;
+    }
+
+    .footer__addr {
+    margin-right: 1.25em;
+    margin-bottom: 2em;
+    }
+
+    .footer__logo {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    text-transform: lowercase;
+    font-size: 1.5rem;
+    margin-right: 270px;
+    width: 150px;
+    }
+
+    .footer__addr h2 {
+    margin-top: 1.3em;
+    font-size: 15px;
+    font-weight: 400;
+    }
+
+    .nav__title {
+    font-weight: 400;
+    font-size: 15px;
+    }
+
+    .footer address {
+    font-style: normal;
+    color: #999;
+    }
+
+    .footer__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    max-width: max-content;
+    background-color: rgb(33, 33, 33, 0.07);
+    border-radius: 100px;
+    color: #2f2f2f;
+    line-height: 0;
+    margin: 0.6em 0;
+    font-size: 1rem;
+    padding: 0 1.3em;
+    }
+
+    .footer ul {
+    list-style: none;
+    padding-left: 0;
+    }
+
+    .footer li {
+    line-height: 2em;
+    }
+
+    .footer a {
+    text-decoration: none;
+    }
+
+    .footer__nav {
+    display: flex;
+    flex-flow: row wrap;
+    }
+
+    .footer__nav > * {
+    flex: 1 50%;
+    margin-right: 1.25em;
+    }
+
+    .nav__ul a {
+    color: #999;
+    }
+
+    .nav__ul--extra {
+    column-count: 2;
+    column-gap: 1.25em;
+    }
+
+    .legal {
+    display: flex;
+    flex-wrap: wrap;
+    color: #999;
+    }
+    
+    .legal__links {
+    display: flex;
+    align-items: center;
+    }
+
+    .heart {
+    color: #2f2f2f;
+    }
+
+    @media screen and (min-width: 24.375em) {
+    .legal .legal__links {
+        margin-left: auto;
+    }
+    }
+
+    @media screen and (min-width: 40.375em) {
+    .footer__nav > * {
+        flex: 1;
+    }
+    
+    .nav__item--extra {
+        flex-grow: 2;
+    }
+    
+    .footer__addr {
+        flex: 1 0px;
+    }
+    
+    .footer__nav {
+        flex: 2 0px;
+    }
+    }
+    .footer__nav .nav__ul li a {
+        position: relative;
+        text-decoration: none;
+        color: #333; 
+    }
+    .footer__logo {
+    
+    margin-right: 280px;
+    }
+
+    .footer__nav .nav__ul li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #333; 
+        transition: width 0.3s;
+    }
+
+    .footer__nav .nav__ul li a:hover::after {
+        width: 100%;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        
+    }
+
+    .popup-content {
+        background-color: #fefefe;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        max-width: 400px; 
+        box-sizing: border-box; 
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .popup-content label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .popup-content input {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 5px;
+    }
+
+    .popup-content button {
+        display: block;
+        margin-top: 20px;
+        border: none;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px;
+        color: white;
+        background-color: #333;
+    }
+    .scroll-to-top-btn {
+        display: none;
+        position: fixed;
+        margin-right: 100px;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .scroll-to-top-btn.show {
+        display: block;
+    }
+
+    .scroll-to-top-btn:hover {
+        background-color: #555;
+    }
+    h1 {
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 0 0 calc(30% - 20px);
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    color: #333;
+    display: block;
+}
+
+.card p {
+    color: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        flex-basis: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        flex-basis: calc(100% - 20px);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://img.freepik.com/free-vector/design-logo-template_23-2148558721.jpg?t=st=1709964015~exp=1709967615~hmac=38759ce4c20d299d6ee81549dd175668580de90380b6d2332a1bdcff8e3196fb&w=740" alt="Logo" width="50" height="50" class="d-inline-block align-middle">
+                Design Future
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mainfocus">How We Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="header" class="container-fluid">
+        <header class="header">
+            
+            <div class="text-box">
+              <h1 class="heading-primary">
+                <span class="heading-primary-main">Elevate Your Space</span>
+<span class="heading-primary-sub">Transforming Homes into Inspirational Spaces</span>
+
+              </h1>
+              <a href="#projects" class="btn btn-white btn-animated">Our projects</a>
+            </div>
+          </header>
+    </div>
+    
+    <div id="about" class="container-fluid">
+        <div class="responsive-container-block bigContainer">
+            <div class="responsive-container-block Container">
+              <div class="imgContainer">
+                <img class="blueDots" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw3.svg">
+                <img class="mainImg"  src="https://img.freepik.com/free-photo/chic-mid-century-modern-luxury-aesthetics-living-room-with-gray-velvet-couch-blue-rug_53876-134091.jpg?t=st=1709967688~exp=1709971288~hmac=c12548d7d46c3ab725d86eb3efe11a9019cbe6c1e727486d488c8b0e628186b5&w=360">
+              </div>
+              <div class="responsive-container-block textSide">
+                <p style="color: rgb(147, 130, 130);" class="text-blk heading">
+                  About Us
+                </p>
+                <p style="color: rgb(147, 130, 130);" class="text-blk subHeading">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget purus lectus viverra in semper nec pretium mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget purus lectus viverra in semper nec pretium mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget purus lectus viverra in semper nec pretium mus.
+                </p>
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                  <div class="cardImgContainer">
+                    <img class="cardImg"  src="https://img.freepik.com/free-photo/living-room-with-blue-sofa-gold-coffee-table_123827-23877.jpg?t=st=1709965788~exp=1709969388~hmac=ba4ad29d5aaa99d84f908ea9405743323fe8da833c4cd5ecdb9b2d51f7988335&w=826">
+                  </div>
+                  <div class="cardText">
+                    <p style="color: rgb(147, 130, 130);" class="text-blk cardHeading">
+                      Value
+                    </p>
+                    <p class="text-blk cardSubHeading">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                  <div class="cardImgContainer">
+                    <img class="cardImg" src="https://img.freepik.com/free-photo/modern-home-interior-with-elegant-design-comfort-generative-ai_188544-8829.jpg?t=st=1709965935~exp=1709969535~hmac=27aa614b80c58a9217ee45c255e7a752f02940ec60b6b22612c4526728b9313e&w=996">
+                  </div>
+                  <div class="cardText">
+                    <p style="color: rgb(147, 130, 130);" class="text-blk cardHeading">
+                      Value
+                    </p>
+                    <p class="text-blk cardSubHeading">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                  <div class="cardImgContainer">
+                    <img class="cardImg" src="https://img.freepik.com/free-psd/modern-interior-design-living-room_176382-1473.jpg?t=st=1709965969~exp=1709969569~hmac=d4fd97145f746f5ccf1429e613186cc5a6720f7ffbda7d91adef8562d8741851&w=740">
+                  </div>
+                  <div class="cardText">
+                    <p style="color: rgb(147, 130, 130);" class="text-blk cardHeading">
+                      Value
+                    </p>
+                    <p class="text-blk cardSubHeading">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                  <div class="cardImgContainer">
+                    <img class="cardImg" src="https://img.freepik.com/free-photo/3d-room-interior-with-classic-design-furniture_23-2150895579.jpg?t=st=1709966003~exp=1709969603~hmac=9b6eee14d2304b28d9b9a7a665ec4920150fa30c253df8b4defd956f2d2cbe6d&w=740">
+                  </div>
+                  <div class="cardText">
+                    <p style="color: rgb(147, 130, 130);" class="text-blk cardHeading">
+                      Value
+                    </p>
+                    <p class="text-blk cardSubHeading">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </div>
+                </div>
+                <a>
+                  <button  style="margin-top: 70px;" class="explore">
+                   <a style="color: white; text-decoration: none;" href="#projects"> Explore our Services</a>
+                  </button>
+                </a>
+              </div>
+             
+            </div>
+          </div>
+    </div>
+    <div id="mainfocus" class="container-fluid">
+        <!-- How We Work section content -->
+        <h1>How We Work</h1>
+        <div class="container">
+            
+            <div class="card">
+                <img src="https://img.freepik.com/premium-photo/close-up-portrait-two-young-girls-working_484921-39503.jpg?w=826" alt="Step 1">
+                <h2>Initial Consultation</h2>
+                <p>We start with an initial consultation to understand your needs, preferences, and budget.</p>
+            </div>
+            <div class="card">
+                <img src="https://img.freepik.com/free-vector/illustration-creative-graphic-design_53876-18124.jpg?t=st=1709979100~exp=1709982700~hmac=7404c711bcf17abc057e6356d235bf5cfb6d8ad9dd214aca377ddf365ae1927c&w=900" alt="Step 2">
+                <h2>Design Concept</h2>
+                <p>Based on your input, we create a design concept that reflects your style and requirements.</p>
+            </div>
+            <div class="card">
+                <img src="https://img.freepik.com/premium-photo/business-process-workflow-automation-with-flowchart-hand-holding-wooden-cube-block-arranging-processing-management-white-background_20693-1220.jpg?w=826" alt="Step 3">
+                <h2>Implementation</h2>
+                <p>Once the design is finalized, we proceed with the implementation phase, bringing your vision to life.</p>
+            </div>
+        </div>
+    </div>
+    <div id="projects" class="container-fluid">
+        <!-- Projects section content -->
+        <div class="masonry-container">
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Sitting room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Gray, Minimalist, Aesthetic</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/free-photo/3d-contemporary-living-room-interior-modern-furniture_1048-9872.jpg?t=st=1709967628~exp=1709971228~hmac=c9fc568ecf0d30218801f420f9707b226c4f4930e5d41b5a61f1c3a710d69065&w=740" alt=""/>
+              </div>
+            </div>
+            <div class="panel">
+            <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Living Room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Blue,Aesthetic,decoration</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/free-photo/living-room-interior_1048-9888.jpg?t=st=1709969895~exp=1709973495~hmac=9886744643d29b8c74e65c2702c4a4bfd58ca2e41e9631fc637b90b015c9f60d&w=996" alt=""/>
+              </div></div>
+            <div class="panel">
+                <div class="panel-wrapper">
+                  <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Living Room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">construction,Aesthetic,Minimalist</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/gray-minimalistic-interior-with-marble-coffee-table-sofa-3d-render-illustration-mock-up_756748-82475.jpg?w=826" alt=""/>
+              </div>
+            </div>
+            
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Dining Room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">construction,Aesthetic,Minimalist</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/luxury-interior-living-room-3d-illustration_208465-310.jpg?w=900" alt=""/>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Bedroom</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Decoration, minimalist, aesthetic, arrangement</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/free-psd/realistic-bright-modern-double-bedroom-with-furniture_176382-449.jpg?t=st=1709969964~exp=1709973564~hmac=bed3e6203f07bc9c281e1583b1f3149a594729af0434aa0814f8727b466812ec&w=996" alt=""/>
+              </div>  
+            </div>
+            
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Sitting Room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Decoration, minimalist, aesthetic, arrangement</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/dusty-blue-sofa-with-pillows-white-coffee-table-potted-plants-bright-cozy-living-room_121837-5100.jpg?w=360" alt=""/>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Sitting Room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Decoration, minimalist, aesthetic, arrangement</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/free-photo/modern-apartment-with-elegant-decor-comfortable-furniture-plants-generative-ai_188544-12643.jpg?t=st=1709973044~exp=1709976644~hmac=e811e6f6db7fa69540511e06ac581b46ea7282b2b46aec5910de54f75e7efd2c&w=996" alt=""/>
+              </div>
+            </div>
+            
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Guests Room</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Decoration, minimalist, aesthetic, arrangement</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/3d-rendering-vintage-warm-tone-wood-living-room-near-stair_105762-1037.jpg?w=900" alt=""/>
+              </div>  
+            </div>
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">bathroom</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Decoration, minimalist, aesthetic, arrangement</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/concrete-gray-bathroom-corner-with-double-sink_780608-9054.jpg?w=826" alt=""/>
+              </div>
+            </div>
+            
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Kitchen</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Decoration,minimalist,aesthetic</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/modern-industrial-design-kitchen-dark-tones-generative-ai_751108-4865.jpg?w=826" alt=""/>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-wrapper">
+                <div class="panel-overlay">
+                  <div class="panel-text">
+                    <div class="panel-title">Office</div>
+                    <div class="panel-tags">
+                      <span class="tag-icon"><img class="tag-icon-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/tag-icon.svg" alt=""/></span>
+                      <span class="tags-list">Minimalist,aesthetic,art</span>
+                    </div>
+                  </div>
+                  <img class="panel-gradient" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/base-gradient.png" alt=""/>
+                  <img class="panel-vingette" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/375042/darken-gradient.png" alt=""/>
+                </div>
+                <img class="panel-img" src="https://img.freepik.com/premium-photo/business-meeting-working-room-executive-office_105762-1730.jpg?w=826" alt=""/>
+              </div>
+            </div>
+          </div>
+        <button id="show-more-btn">Show More ></button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__addr">
+            <h1 class="footer__logo">Design Future</h1>
+            <h2>Contact</h2>
+            <address>
+                5534 Interior Design Blvd. Suite 22193-10212<br>
+                <a class="footer__btn" href="#contact">Contact Us</a>
+            </address>
+        </div>
+    
+        <ul class="footer__nav">
+            <li class="nav__item">
+                <h2 class="nav__title">Projects</h2>
+                <ul class="nav__ul">
+                    <li>
+                        <a href="#">Residential</a>
+                    </li>
+                    <li>
+                        <a href="#">Commercial</a>
+                    </li>
+                    <li>
+                        <a href="#">Hospitality</a>
+                    </li>
+                </ul>
+            </li>
+    
+            <li class="nav__item nav__item--extra">
+                <h2 class="nav__title">Services</h2>
+                <ul class="nav__ul nav__ul--extra">
+                    <li>
+                        <a href="#">Interior Design Consultation</a>
+                    </li>
+                    <li>
+                        <a href="#">Space Planning</a>
+                    </li>
+                    <li>
+                        <a href="#">Furniture Selection</a>
+                    </li>
+                    <li>
+                        <a href="#">Color Palette Design</a>
+                    </li>
+                    <li>
+                        <a href="#">Lighting Design</a>
+                    </li>
+                    <li>
+                        <a href="#">Renovation</a>
+                    </li>
+                </ul>
+            </li>
+    
+            <li class="nav__item">
+                <h2 class="nav__title">Resources</h2>
+                <ul class="nav__ul">
+                    <li>
+                        <a href="#">Design Tips</a>
+                    </li>
+                    <li>
+                        <a href="#">Inspiration Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#">Interior Design Trends</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    
+        <div class="legal">
+            <p>&copy; 2024 Design Future. All rights reserved.</p>
+            <div class="legal__links">
+                <span>Made with <span class="heart">♥</span> love of <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">Art</span></span>
+            </div>
+        </div>
+        <div id="emailPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Enter Your Details</h2>
+                <form id="userForm" action="/submit-form" method="POST">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+                    <button type="submit" id="sendEmail">Send</button>
+                </form>
+            </div>
+        </div>
+        
+        <button id="scrollToTopBtn" class="scroll-to-top-btn" onclick="scrollToTop()">&#8679;</button>
+
+        
+    </footer>
+<script>
+    var emailLink = document.querySelector('.footer__btn');
+    var popup = document.getElementById('emailPopup');
+    var closeButton = document.querySelector('.close');
+
+    function openPopup() {
+        popup.style.display = 'block';
+    }
+
+    function closePopup() {
+        popup.style.display = 'none';
+    }
+
+    emailLink.addEventListener('click', openPopup);
+
+    closeButton.addEventListener('click', closePopup);
+
+
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", () => {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopBtn.classList.add("show");
+        } else {
+            scrollToTopBtn.classList.remove("show");
+        }
+    });
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+</script>
+</body>
+</html>
